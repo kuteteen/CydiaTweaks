@@ -22,7 +22,9 @@ A fork of [HomeGesture][hg] with no configurable options. Similar to [HomeGuestu
 Remove "No Sim Card Installed" alert on iOS 12. Previous [tweaks][coysim] do not work on iOS 12.
 
 ### ForceChinese
-Force Mi Fit app to show in Chinese language. This tweak writes language settings to the app preferences. If you want to revert to system language, try:
+Force Mi Fit app to show in Chinese language. It only works with Mi Fit app. Try to edit "ForceChinese.plist" to work with other apps.
+
+This tweak writes language settings to the app preferences. If you want to revert to system language, try:
 
 1. Uninstall ForceChinese
 2. Install UnforceChinese
