@@ -1,0 +1,11 @@
+Author: Linus Yang
+Maintainer: Linus Yang
+Name: CCVPN
+Package: com.linusyang.ccvpn
+Depends: mobilesubstrate, firmware (>= 11.0), com.opa334.ccsupport
+Section: Tweaks
+Version: 1.1
+Architecture: iphoneos-arm
+Description: a control center module to connect/disconnect VPN
+Tag: purpose::extension, compatible::ios11
+Icon: file:///Library/ControlCenter/Bundles/CCVPN.bundle/Icon@2x.png

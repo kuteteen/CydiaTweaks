@@ -1,0 +1,9 @@
+Package: com.linusyang.nosimalert
+Name: NoSimAlert (iOS 12)
+Depends: mobilesubstrate
+Version: 1.0
+Architecture: iphoneos-arm
+Description: remove no sim alert
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks

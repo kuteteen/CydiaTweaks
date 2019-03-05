@@ -1,0 +1,9 @@
+Package: com.linusyang.autovpn
+Name: AutoVPN
+Depends: mobilesubstrate, preferenceloader, com.spark.libsparkapplist
+Version: 1.1
+Architecture: iphoneos-arm
+Description: auto connect to vpn in selected apps
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks

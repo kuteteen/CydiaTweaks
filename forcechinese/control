@@ -1,0 +1,10 @@
+Package: com.linusyang.forcechinese
+Name: ForceChinese
+Depends: mobilesubstrate
+Conflicts: com.linusyang.unforcechinese
+Version: 1.0
+Architecture: iphoneos-arm
+Description: force apps to use Chinese locale
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks

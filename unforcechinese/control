@@ -1,0 +1,10 @@
+Package: com.linusyang.unforcechinese
+Name: UnforceChinese
+Depends: mobilesubstrate
+Conflicts: com.linusyang.forcechinese
+Version: 1.0
+Architecture: iphoneos-arm
+Description: revert apps to use system locale
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks

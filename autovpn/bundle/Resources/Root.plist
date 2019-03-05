@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Foreground Only: auto-connect only when selected apps is in foreground.
+
+Keep Connected: do not disconnect when all selected apps are exited.</string>
+			<key>label</key>
+			<string>Options</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.linusyang.autovpn.prefschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.linusyang.autovpn</string>
+			<key>key</key>
+			<string>enabled</string>
+			<key>label</key>
+			<string>Enabled</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.linusyang.autovpn.prefschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.linusyang.autovpn</string>
+			<key>key</key>
+			<string>foreground</string>
+			<key>label</key>
+			<string>Foreground Only</string>
+		</dict>
+		<dict>
+			<key>PostNotification</key>
+			<string>com.linusyang.autovpn.prefschanged</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.linusyang.autovpn</string>
+			<key>key</key>
+			<string>keep</string>
+			<key>label</key>
+			<string>Keep Connected</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerText</key>
+			<string>Choose apps to auto connect or disconnect. If selected in both lists, it will be disconnect by default.</string>
+			<key>label</key>
+			<string>Select Apps</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>selectConnectApps</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Auto Connect</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>selectDisconnectApps</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Auto Disconnect</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Backup and Restore</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>backup</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Backup</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkListCell</string>
+			<key>default</key>
+			<integer>0</integer>
+			<key>defaults</key>
+			<string>com.linusyang.autovpn</string>
+			<key>detail</key>
+			<string>AVPListController</string>
+			<key>key</key>
+			<string>restoredFile</string>
+			<key>label</key>
+			<string>Restore</string>
+		</dict>
+		<dict>
+			<key>action</key>
+			<string>resetAppList</string>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Reset App Lists</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>© 2019 Linus Yang</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>AutoVPN</string>
+</dict>
+</plist>
