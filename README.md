@@ -19,7 +19,7 @@ A VPN toggle in Control Center for iOS 11+. Similar to [CCVPN][cv], but more rel
 A fork of [HomeGesture][hg] with no configurable options. Similar to [HomeGuesture Lite][hgl], where all options are pre-defined.
 
 ### NoSimAlert
-Remove "No Sim Card Installed" alert on iOS 12. Previous [tweaks][coysim] do not on iOS 12.
+Remove "No Sim Card Installed" alert on iOS 12. Previous [tweaks][coysim] do not work on iOS 12.
 
 ### ForceChinese
 Force Mi Fit app to show in Chinese language. This tweak writes language settings to the app preferences. If you want to revert to system language, try:
