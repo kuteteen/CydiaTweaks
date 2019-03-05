@@ -47,13 +47,11 @@ static void settingsChanged(CFNotificationCenterRef center, void *observer, CFSt
 
 static void connectVPN(BOOL connect) {
     LOG("%@ vpn...", connect ? @"connect" : @"disconnect");
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([controller respondsToSelector:@selector(_setVPNActive:)]) {
-            [controller _setVPNActive:connect];
-        } else if ([controller respondsToSelector:@selector(setVPNActive:)]) {
-            [controller setVPNActive:connect];
-        }
-    });
+    if ([controller respondsToSelector:@selector(_setVPNActive:)]) {
+        [controller _setVPNActive:connect];
+    } else if ([controller respondsToSelector:@selector(setVPNActive:)]) {
+        [controller setVPNActive:connect];
+    }
 }
 
 static void appLaunched(NSString *identifier) {
