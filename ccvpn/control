@@ -4,7 +4,7 @@ Name: CCVPN
 Package: com.linusyang.ccvpn
 Depends: mobilesubstrate, firmware (>= 11.0), com.opa334.ccsupport
 Section: Tweaks
-Version: 1.1
+Version: 1.2
 Architecture: iphoneos-arm
 Description: a control center module to connect/disconnect VPN
 Tag: purpose::extension, compatible::ios11

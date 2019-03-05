@@ -1,45 +1,56 @@
 #import <objc/runtime.h>
 
 @interface CCUIToggleModule : NSObject
--(void)refreshState;
+- (void)refreshState;
+- (BOOL)isSelected;
+- (void)setSelected:(BOOL)arg;
 @end
 
-@interface VPNBundleController : NSObject
+@interface SBTelephonyManager : NSObject
++ (instancetype)sharedTelephonyManager;
+- (BOOL)isUsingVPNConnection;
+@end
 
-- (id)initWithParentListController:(id)arg;
-- (id)vpnActiveForSpecifier:(id)arg;
+@interface PSBundleController : NSObject
+- (instancetype)initWithParentListController:(id)parentListController;
+@end
+
+@interface VPNBundleController : PSBundleController
 - (void)setVPNActive:(BOOL)arg;
 - (void)_setVPNActive:(BOOL)arg;
-
 @end
 
-@interface CCVPN : CCUIToggleModule
-@property (nonatomic, strong) VPNBundleController *ctrl;
-@end
-
-static void VPNSettingsChanged(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
-{
-    [(CCVPN *)observer refreshState];
+@interface CCVPN : CCUIToggleModule {
+    BOOL _connected;
+    VPNBundleController *_controller;
+    id _observer;
 }
+@end
 
 @implementation CCVPN
 
-- (CCVPN *)init {
+- (id)init {
     self = [super init];
-
     if (self) {
         NSBundle* VPNPreferences = [NSBundle bundleWithPath:@"/System/Library/PreferenceBundles/VPNPreferences.bundle"];
-        if ([VPNPreferences load]) {
-            Class cls = objc_getClass("VPNBundleController");
-            if (cls) {
-                self.ctrl = [[cls alloc] initWithParentListController:nil];
-                CFNotificationCenterRef center = CFNotificationCenterGetLocalCenter();
-                CFNotificationCenterAddObserver(center, self, VPNSettingsChanged, CFSTR("SBVPNConnectionChangedNotification"), NULL, CFNotificationSuspensionBehaviorCoalesce);
-            }
-        }
+        [VPNPreferences load];
+        _controller = [[objc_getClass("VPNBundleController") alloc] initWithParentListController:nil];
+        SBTelephonyManager *telephoneInfo = [objc_getClass("SBTelephonyManager") sharedTelephonyManager];
+        _connected = telephoneInfo.isUsingVPNConnection;
+        NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+        NSOperationQueue *queue = [NSOperationQueue mainQueue];
+        _observer = [center addObserverForName:@"SBVPNConnectionChangedNotification" object:nil queue:queue usingBlock:^(NSNotification *note) {
+            _connected = telephoneInfo.isUsingVPNConnection;
+            [self refreshState];
+        }];
     }
-    
     return self;
+}
+
+- (void)dealloc {
+    if (_observer != nil) {
+        [[NSNotificationCenter defaultCenter] removeObserver:_observer];
+    }
 }
 
 - (UIImage *)iconGlyph {
@@ -47,22 +58,19 @@ static void VPNSettingsChanged(CFNotificationCenterRef center, void *observer, C
 }
 
 - (UIColor *)selectedColor {
-	return [UIColor blueColor];
+	return [UIColor colorWithRed:0.0 green:111.0/255.0 blue:1.0 alpha:1.0];;
 }
 
 - (BOOL)isSelected {
-    id specifier = [self.ctrl valueForKey:@"_vpnSpecifier"];
-    return [[self.ctrl vpnActiveForSpecifier:specifier] boolValue];
+    return _connected;
 }
 
-- (void)setSelected:(BOOL)selected {
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if ([self.ctrl respondsToSelector:@selector(_setVPNActive:)]) {
-            [self.ctrl _setVPNActive:selected];
-        } else if ([self.ctrl respondsToSelector:@selector(setVPNActive:)]) {
-            [self.ctrl setVPNActive:selected];
-        }
-    });
+- (void)setSelected:(BOOL)arg {
+    if ([_controller respondsToSelector:@selector(_setVPNActive:)]) {
+        [_controller _setVPNActive:arg];
+    } else if ([_controller respondsToSelector:@selector(setVPNActive:)]) {
+        [_controller setVPNActive:arg];
+    }
 }
 
 @end
