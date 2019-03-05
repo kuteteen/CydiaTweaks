@@ -3,6 +3,10 @@ My Cydia Tweaks
 
 This is a collection of my Cydia Substrate tweaks. Tested with iOS 11+.
 
+# Installation
+* Add [repo.linusyang.com](https://repo.linusyang.com/) to Cydia
+* Search the tweak and install.
+
 # Tweak List
 
 ## AutoVPN
@@ -24,7 +28,9 @@ Remove "No Sim Card Installed" alert on iOS 12. Previous tweaks are not working 
 Install [theos][theos] and type `make`. Use `make -j4` to speed up the build in parallel.
 
 # License
-All source code is licensed under GPLv3.
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+All source code is licensed under [GPLv3](http://www.gnu.org/copyleft/gpl.html).
 
 [hg]: https://repo.dynastic.co/depiction/94936559895183360/
 [sv]: http://cydia.saurik.com/package/com.zyb.smartvpn/
