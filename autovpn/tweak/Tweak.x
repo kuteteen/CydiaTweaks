@@ -29,8 +29,14 @@ static VPNBundleController *controller = nil;
 static NSDictionary *prefs = nil;
 
 #define isEnabled ([prefs[kPrefKeyEnabled] boolValue])
-#define isKeep ([prefs[kPrefKeyKeep] boolValue])
-#define isForeground ([prefs[kPrefKeyForeground] boolValue])
+#define keepConn ([prefs[kPrefKeyKeep] boolValue])
+#define foregroundOnly ([prefs[kPrefKeyForeground] boolValue])
+#define matchConnect(i) ([SparkAppList doesIdentifier:kPrefIdentifier \
+                                       andKey:kPrefKeyConnect \
+                                       containBundleIdentifier:i])
+#define matchDisconnect(i) ([SparkAppList doesIdentifier:kPrefIdentifier \
+                                          andKey:kPrefKeyDisconnect \
+                                          containBundleIdentifier:i])
 
 static void updateSettings() {
     CFPreferencesAppSynchronize((CFStringRef)kPrefIdentifier);
@@ -59,14 +65,10 @@ static void appLaunched(NSString *identifier) {
     if (!isEnabled) {
         return;
     }
-    if ([SparkAppList doesIdentifier:kPrefIdentifier
-                      andKey:kPrefKeyDisconnect
-                      containBundleIdentifier:identifier]) {
+    if (matchDisconnect(identifier)) {
         LOG("disconnect app matched");
         connectVPN(NO);
-    } else if ([SparkAppList doesIdentifier:kPrefIdentifier
-                             andKey:kPrefKeyConnect
-                             containBundleIdentifier:identifier]) {
+    } else if (matchConnect(identifier)) {
         LOG("connect app matched");
         connectVPN(YES);
         [runningApps addObject:identifier];
@@ -78,10 +80,7 @@ static void appGoBackground(NSString *identifier) {
     if (!isEnabled) {
         return;
     }
-    if (isForeground &&
-        [SparkAppList doesIdentifier:kPrefIdentifier
-                      andKey:kPrefKeyConnect
-                      containBundleIdentifier:identifier]) {
+    if (foregroundOnly && matchConnect(identifier)) {
         LOG("foreground only, stop vpn for %@", identifier);
         connectVPN(NO);
     }
@@ -89,11 +88,11 @@ static void appGoBackground(NSString *identifier) {
 
 static void appExited(NSString *identifier) {
     LOG("app exited: %@", identifier);
-    if (!isEnabled) {
+    if (!isEnabled || !matchConnect(identifier)) {
         return;
     }
     [runningApps removeObject:identifier];
-    if (!isKeep && runningApps.count == 0) {
+    if (!keepConn && runningApps.count == 0) {
         LOG("no running apps, stop vpn");
         connectVPN(NO);
     }
