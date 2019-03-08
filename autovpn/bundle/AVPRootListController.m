@@ -22,19 +22,20 @@ static NSDictionary *loadPrefs() {
     return allPrefs;
 }
 
-#define SAFEARR(x) ((x) == nil ? [NSArray array] : (x))
+#define ARRVALUE(x) ((x) == nil ? [NSArray array] : (x))
+#define BOOLVALUE(x) (@([x boolValue]))
+#define SAVE(p, q, k, t) (p[k] = t ## VALUE(q[k]))
 
 static BOOL savePrefs(NSDictionary *prefs) {
-    NSDictionary *savePrefs = @{
-        kPrefKeyEnabled: prefs[kPrefKeyEnabled],
-        kPrefKeyForeground: prefs[kPrefKeyForeground],
-        kPrefKeyKeep: prefs[kPrefKeyKeep],
-        kPrefKeyConnect: SAFEARR(prefs[kPrefKeyConnect]),
-        kPrefKeyDisconnect: SAFEARR(prefs[kPrefKeyDisconnect])
-    };
+    NSMutableDictionary *savePrefs = [NSMutableDictionary dictionary];
+    SAVE(savePrefs, prefs, kPrefKeyEnabled, BOOL);
+    SAVE(savePrefs, prefs, kPrefKeyForeground, BOOL);
+    SAVE(savePrefs, prefs, kPrefKeyKeep, BOOL);
+    SAVE(savePrefs, prefs, kPrefKeyConnect, ARR);
+    SAVE(savePrefs, prefs, kPrefKeyDisconnect, ARR);
     CFPreferencesSetMultiple((__bridge CFDictionaryRef)savePrefs, NULL, (CFStringRef)kPrefIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
-    [SparkAppList setAppList:SAFEARR(prefs[kPrefKeyConnect]) forIdentifier:kPrefIdentifier andKey:kPrefKeyConnect];
-    [SparkAppList setAppList:SAFEARR(prefs[kPrefKeyDisconnect]) forIdentifier:kPrefIdentifier andKey:kPrefKeyDisconnect];
+    [SparkAppList setAppList:savePrefs[kPrefKeyConnect] forIdentifier:kPrefIdentifier andKey:kPrefKeyConnect];
+    [SparkAppList setAppList:savePrefs[kPrefKeyDisconnect] forIdentifier:kPrefIdentifier andKey:kPrefKeyDisconnect];
     return CFPreferencesSynchronize((CFStringRef)kPrefIdentifier, kCFPreferencesCurrentUser, kCFPreferencesAnyHost);
 }
 
