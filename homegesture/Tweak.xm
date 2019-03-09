@@ -126,6 +126,11 @@ int applicationDidFinishLaunching;
 	return;
 }
 %end
+%hook MTStaticColorPillView
+- (id)initWithFrame:(CGRect)arg1{
+    return NULL;
+}
+%end
 
 // Restore footer indicators
 %hook SBDashBoardViewController
