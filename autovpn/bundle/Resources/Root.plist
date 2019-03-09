@@ -8,7 +8,7 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>footerText</key>
-			<string>Foreground Only: auto-connect only when selected apps is in foreground.
+			<string>Foreground Only: auto-connect only when selected apps are in foreground.
 
 Keep Connected: do not disconnect when all selected apps are exited.</string>
 			<key>label</key>
@@ -85,6 +85,10 @@ Keep Connected: do not disconnect when all selected apps are exited.</string>
 			<string>PSGroupCell</string>
 			<key>label</key>
 			<string>Backup and Restore</string>
+			<key>footerAlignment</key>
+			<integer>1</integer>
+			<key>footerText</key>
+			<string>© 2019 Linus Yang</string>
 		</dict>
 		<dict>
 			<key>action</key>
@@ -115,14 +119,6 @@ Keep Connected: do not disconnect when all selected apps are exited.</string>
 			<string>PSButtonCell</string>
 			<key>label</key>
 			<string>Reset App Lists</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>footerAlignment</key>
-			<integer>1</integer>
-			<key>footerText</key>
-			<string>© 2019 Linus Yang</string>
 		</dict>
 	</array>
 	<key>title</key>

@@ -6,6 +6,8 @@
 #define kPrefKeyKeep @"keep"
 #define kPrefNotification @"com.linusyang.autovpn.prefschanged"
 #define kPrefBackupDir @"/var/mobile/Library/Preferences/com.linusyang.autovpn"
+#define kPrefBundlePath @"/Library/PreferenceBundles/AutoVPN.bundle"
+#define TRANS(s) ([[NSBundle bundleWithPath:kPrefBundlePath] localizedStringForKey:(s) value:(s) table:@"Root"])
 
 #define AVPDEBUG 0
 #if AVPDEBUG

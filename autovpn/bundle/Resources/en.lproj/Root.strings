@@ -1,0 +1,21 @@
+"Backup" = "Backup";
+"Backup configurations will show up here." = "Backup configurations will show up here.";
+"Backup Files" = "Backup Files";
+"Backup Name" = "Backup Name";
+"Cancel" = "Cancel";
+"Confirm to deselect all apps in lists?" = "Confirm to deselect all apps in lists?";
+"Reset" = "Reset";
+"Reset App Lists" = "Reset App Lists";
+
+"Foreground Only: auto-connect only when selected apps are in foreground.\n\nKeep Connected: do not disconnect when all selected apps are exited." = "Foreground Only: auto-connect only when selected apps are in foreground.\n\nKeep Connected: do not disconnect when all selected apps are exited.";
+"Choose apps to auto connect or disconnect. If selected in both lists, it will be disconnected by default." = "Choose apps to auto connect or disconnect. If selected in both lists, it will be disconnected by default.";
+
+"Options" = "Options";
+"Enabled" = "Enabled";
+"Foreground Only" = "Foreground Only";
+"Keep Connected" = "Keep Connected";
+"Select Apps" = "Select Apps";
+"Auto Connect" = "Auto Connect";
+"Auto Disconnect" = "Auto Disconnect";
+"Backup and Restore" = "Backup and Restore";
+"Restore" = "Restore";

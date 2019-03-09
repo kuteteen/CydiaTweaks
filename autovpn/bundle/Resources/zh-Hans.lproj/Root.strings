@@ -1,0 +1,21 @@
+"Backup" = "备份";
+"Backup configurations will show up here." = "已备份的配置将会在此显示。";
+"Backup Files" = "备份文件";
+"Backup Name" = "备份名";
+"Cancel" = "取消";
+"Confirm to deselect all apps in lists?" = "是否重置应用列表？";
+"Reset" = "重置";
+"Reset App Lists" = "重置应用列表";
+
+"Foreground Only: auto-connect only when selected apps are in foreground.\n\nKeep Connected: do not disconnect when all selected apps are exited." = "仅前台: 仅当已选应用在前台时连接。\n保持连接: 所有应用退出时不断开连接。";
+"Choose apps to auto connect or disconnect. If selected in both lists, it will be disconnected by default." = "选择应用自动连接或断开。若在两个列表中同时选中，则默认为自动断开。";
+
+"Options" = "选项";
+"Enabled" = "启用";
+"Foreground Only" = "仅前台";
+"Keep Connected" = "保持连接";
+"Select Apps" = "选择应用";
+"Auto Connect" = "自动连接";
+"Auto Disconnect" = "自动断开";
+"Backup and Restore" = "备份和恢复";
+"Restore" = "恢复";

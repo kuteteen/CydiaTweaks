@@ -118,16 +118,16 @@ static BOOL restoreBackup(NSString *name) {
     if (!_specifiers) {
         NSArray *list = backupList();
         _specifiers = [NSMutableArray array];
-        PSSpecifier *group = [PSSpecifier preferenceSpecifierNamed:@"Backup Files"
+        PSSpecifier *group = [PSSpecifier preferenceSpecifierNamed:TRANS(@"Backup Files")
                                           target:self
                                              set:NULL
                                              get:NULL
                                           detail:Nil
                                             cell:PSGroupCell
                                             edit:Nil];
-        [group setProperty:@"Backup Files" forKey:@"label"];
+        [group setProperty:TRANS(@"Backup Files") forKey:@"label"];
         if (list.count == 0) {
-            [group setProperty:@"Backup configurations will show up here." forKey:@"footerText"];
+            [group setProperty:TRANS(@"Backup configurations will show up here.") forKey:@"footerText"];
         }
         [_specifiers addObject:group];
         for (int i = 0; i < list.count; i++) {
@@ -193,13 +193,13 @@ static BOOL restoreBackup(NSString *name) {
 }
 
 - (void)backup {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Backup Name" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:TRANS(@"Backup Name") message:@"" preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd-HH-mm-ss"];
         textField.placeholder = [formatter stringFromDate:[NSDate date]];
     }];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Backup" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:TRANS(@"Backup") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *textField = [alertController textFields][0];
         NSString *name = textField.text;
         if (name.length == 0) {
@@ -210,21 +210,21 @@ static BOOL restoreBackup(NSString *name) {
         });
     }];
     [alertController addAction:confirmAction];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:TRANS(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)resetAppList {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Reset App Lists" message:@"Confirm to deselect all apps in lists?" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:TRANS(@"Reset App Lists") message:TRANS(@"Confirm to deselect all apps in lists?") preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:TRANS(@"Reset") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             [SparkAppList setAppList:[NSArray array] forIdentifier:kPrefIdentifier andKey:kPrefKeyConnect];
             [SparkAppList setAppList:[NSArray array] forIdentifier:kPrefIdentifier andKey:kPrefKeyDisconnect];
         });
     }];
     [alertController addAction:confirmAction];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:TRANS(@"Cancel") style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {}];
     [alertController addAction:cancelAction];
     [self presentViewController:alertController animated:YES completion:nil];
 }
