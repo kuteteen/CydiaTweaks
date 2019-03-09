@@ -1,0 +1,9 @@
+Package: com.linusyang.voipdisabler
+Name: VOIP Disabler
+Depends: mobilesubstrate, preferenceloader, com.spark.libsparkapplist
+Version: 1.0
+Architecture: iphoneos-arm
+Description: disable VOIP background mode of apps
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks
