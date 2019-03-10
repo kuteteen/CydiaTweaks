@@ -224,9 +224,31 @@ int applicationDidFinishLaunching;
 %hook SBDashBoardTeachableMomentsContainerView
 -(void)_addControlCenterGrabber {}
 %end
+//Enable Torch/Camera buttons on unsupported devices
+%hook SBDashBoardQuickActionsViewController
++ (BOOL)deviceSupportsButtons {
+    return NO;
+}
+-(BOOL)hasFlashlight{
+    return NO;
+}
+-(BOOL)hasCamera{
+    return NO;
+}
+%end
+
+%group iOS12
 // Fix iOS 12 crashing
 %hook _UIStatusBarVisualProvider_iOS
 + (Class)class {
     return NSClassFromString(@"_UIStatusBarVisualProvider_Split58");
 }
 %end
+%end
+
+%ctor {
+    if (kCFCoreFoundationVersionNumber >= 1535.12) {
+        %init(iOS12);
+    }
+    %init;
+}
