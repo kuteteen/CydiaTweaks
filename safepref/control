@@ -1,0 +1,9 @@
+Package: com.linusyang.safepref
+Name: SafePref
+Depends: mobilesubstrate
+Version: 0.1
+Architecture: iphoneos-arm
+Description: disable ota and reset all entries in preferences
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks
