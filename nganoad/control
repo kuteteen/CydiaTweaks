@@ -1,0 +1,9 @@
+Package: com.linusyang.nganoad
+Name: NGANoAd
+Depends: mobilesubstrate
+Version: 0.1
+Architecture: iphoneos-arm
+Description: remove NGA launch screen ads
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks
