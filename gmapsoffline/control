@@ -1,0 +1,9 @@
+Package: com.linusyang.gmapsoffline
+Name: GMaps Any Offline
+Depends: mobilesubstrate
+Version: 0.2
+Architecture: iphoneos-arm
+Description: remove offline restrictions of Google Maps
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks
