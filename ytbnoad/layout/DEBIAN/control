@@ -1,0 +1,10 @@
+Package: com.linusyang.ytbnoad
+Name: YoutubeNoAd
+Depends: mobilesubstrate
+Conflicts: me.alfhaily.adblockforyoutube
+Version: 0.1
+Architecture: iphoneos-arm
+Description: remove ads in Youtube app
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks
