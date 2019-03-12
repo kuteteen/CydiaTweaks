@@ -1,0 +1,9 @@
+Package: com.linusyang.gpnosuggest
+Name: GPNoSuggest
+Depends: mobilesubstrate
+Version: 0.1
+Architecture: iphoneos-arm
+Description: remove suggested contacts in Google Photos
+Maintainer: Linus Yang
+Author: Linus Yang
+Section: Tweaks
